@@ -5,8 +5,10 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
 
-    <include file="classpath:db/changelog/create-sequence.xml"/>
-    <include file="classpath:db/changelog/create-currency-table.xml"/>
-    <include file="classpath:db/changelog/insert-currency.xml"/>
-    <include file="classpath:db/changelog/add-iso-char-code-column.xml"/>
+    <changeSet id="add-iso-char-code-to-currency" author="developer">
+        <addColumn tableName="currency">
+            <column name="iso_char_code" type="VARCHAR(3)"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>
