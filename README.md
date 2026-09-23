@@ -1,68 +1,70 @@
-# Сервис Обмен валюты
-Приложение для практического кейса "Обмен Валюты" обучающей платформы [Skillbox](https://skillbox.ru)
+# Currency Exchange Service
 
-## Используемые технологии
+An application for the practical **"Currency Exchange"** project on the [Skillbox](https://skillbox.ru) educational platform.
+
+## Technologies Used
 
 - Spring Boot 2.7
 - Maven 3
 - Lombok
-- Mapstruct
+- MapStruct
 - Liquibase
 - PostgreSQL
 
-## Требования
+## Requirements
 
 ### JDK 17
 
-Проект использует синтаксис Java 17. Для локального запуска вам потребуется
-установленный JDK 17.
+The project uses Java 17 syntax. To run the application locally, you need to have **JDK 17** installed.
 
 ### Docker
-Для запуска проекта вам потребуется установленный и запущенный Docker.
-Для запуска БД(PostgreSQL) требется запустить соответствующий сервис в Docker.
 
-### Подключение к интернету
+Docker must be installed and running.
 
-Подключение к интернету для получения курсов валют
+The PostgreSQL database is run in a Docker container.
 
-## Полезные команды
+### Internet Connection
 
-### Запуск контейнера с базой данных
+An internet connection is required to retrieve current exchange rates.
+
+## Useful Commands
+
+### Start the PostgreSQL Database Container
 
 ```bash
 docker run -p 5432:5432 --name postgres -e POSTGRES_PASSWORD=postgres -d postgres
-```
+````
 
-Пользователь для подключения к контейнеру `postgres`.
+The username for connecting to the PostgreSQL container is: `postgres`.
 
 ### IntelliJ IDEA
 
-Запустите main метод класса Application
+Run the main method in the Application class.
 
-### Запросы API
+### API Requests
 
-Создание новой записи о валюте
+Create new currency
 
 ```bash
 curl --request POST \
   --url http://localhost:8080/api/currency/create \
   --header 'Content-Type: application/json' \
   --data '{
-  "name": "Доллар Готэм-Сити",
+  "name": "Gotham City Dollar",
   "nominal": 3,
   "value": 32.2,
   "isoNumCode": 1337
 }'
 ```
 
-Получение Валюты по id
+Get currency by ID
 
 ```bash
 curl --request GET \
   --url http://localhost:8080/api/currency/1333
 ```
 
-Конвертация валюты по числовому коду
+Convert Currency by Numeric Code
 
 ```bash
 curl --request GET \
